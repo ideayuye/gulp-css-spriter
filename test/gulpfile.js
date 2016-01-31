@@ -16,9 +16,10 @@ gulp.task('sprite', function() {
 			'spriteSheet': './dist/images/spritesheet.png',
 			'pathToSpriteSheetFromCSS': '../images/spritesheet.png'
 		}))
-		.pipe(es.wait(function(err, body) {
-			console.log(arguments);
-		}));
+		.pipe(gulp.dest('./dist'));
+		//.pipe(es.wait(function(err, body) {
+		//	console.log(arguments);
+		//}));
 });
 
 

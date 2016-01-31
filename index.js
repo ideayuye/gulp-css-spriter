@@ -59,7 +59,8 @@ var spriter = function(options) {
 		'spritesmithOptions': {},
 		// Used to format output CSS
 		// You should be using a separate beautifier plugin
-		'outputIndent': '\t'
+		'outputIndent': '\t',
+		'filter':['../test-images/aenean-purple.png']
 	};
 
 	var settings = extend({}, defaults, options);
@@ -118,6 +119,15 @@ var spriter = function(options) {
 
 				// Match each background image in the declaration (there could be multiple background images per value)
 				spriterUtil.matchBackgroundImages(declaration.value, function(imagePath) {
+					//添加过滤不合并的图片
+					if(Array.isArray(settings.filter)){
+						var isFind = settings.filter.find(function (v) {
+							return v == imagePath;
+						});
+						if (isFind) {
+							return;
+						}
+					}
 					imagePath = path.join(path.dirname(chunk.path), imagePath);
 
 					// If not already in the overall list of images collected
