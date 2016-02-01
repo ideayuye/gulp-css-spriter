@@ -60,7 +60,8 @@ var spriter = function(options) {
 		// Used to format output CSS
 		// You should be using a separate beautifier plugin
 		'outputIndent': '\t',
-		'filter':['../test-images/aenean-purple.png']
+		// Filtering does not want to merge the picture
+		'filter':[]
 	};
 
 	var settings = extend({}, defaults, options);
